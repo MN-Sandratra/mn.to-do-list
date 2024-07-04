@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo:latest
+    container_name: mongodbtodo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: todo123
+    ports:
+      - "27027:27017"
+    volumes:
+      - mongo-data:/data/db
+    profiles:
+      - db
+
+volumes:
+  mongo-data:
