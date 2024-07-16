@@ -14,6 +14,7 @@ import { AuthModule } from './auth/auth.module';
 import { CategorieModule } from './categorie/categorie.module';
 import { GlobalGqlExceptionFilter } from './filters/global-gql-http-exception.filter';
 import { LoggerModule } from './logger/logger.module';
+import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
 
 @Module({
@@ -36,6 +37,7 @@ import { UserModule } from './user/user.module';
     ConfigModule,
     CategorieModule,
     AuthModule,
+    TaskModule,
     ConfigModule.forRoot({
       isGlobal: true,
     }),
