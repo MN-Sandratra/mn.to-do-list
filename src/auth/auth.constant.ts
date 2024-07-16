@@ -1,3 +1,3 @@
 export const jwtConstants = {
-  secret: process.env.DATABASE_HOST || 'TODO LIST TEST SECRET',
+  secret: process.env.JWT_SECRET || 'TODO LIST TEST SECRET',
 };

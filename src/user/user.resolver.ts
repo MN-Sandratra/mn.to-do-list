@@ -1,5 +1,6 @@
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Public } from 'src/decorators/public-strategy';
 import { CreateUserCommand } from './commands/createUser/create-user.command';
 import { CreateUserInput } from './graphQL/create-user.input';
 import { LoginUserInput } from './graphQL/login-user.input';
@@ -12,6 +13,7 @@ export class UserResolver {
     private readonly queryBus: QueryBus,
   ) {}
 
+  @Public()
   @Query(() => String)
   async loginUser(
     @Args('loginUserData') loginUserData: LoginUserInput,
@@ -21,6 +23,7 @@ export class UserResolver {
     );
   }
 
+  @Public()
   @Mutation(() => Boolean, { name: 'createUser' })
   async createUser(
     @Args('createUserData')
