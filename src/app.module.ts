@@ -11,6 +11,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GqlJwtAuthGuard } from './auth/auth.guard';
 import { AuthModule } from './auth/auth.module';
+import { CategorieModule } from './categorie/categorie.module';
 import { GlobalGqlExceptionFilter } from './filters/global-gql-http-exception.filter';
 import { LoggerModule } from './logger/logger.module';
 import { UserModule } from './user/user.module';
@@ -19,8 +20,8 @@ import { UserModule } from './user/user.module';
   imports: [
     MongooseModule.forRootAsync({
       useFactory: () => ({
-        uri: 'mongodb://root:todo123@localhost:27027',
-        dbName: 'todolist',
+        uri: process.env.DATABASE_URL,
+        dbName: process.env.DATABASE_NAME,
       }),
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -33,6 +34,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     LoggerModule,
     ConfigModule,
+    CategorieModule,
     AuthModule,
     ConfigModule.forRoot({
       isGlobal: true,
